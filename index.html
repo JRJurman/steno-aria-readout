@@ -1,10 +1,10 @@
 <head>
   <title>Steno Aria Readout</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  
+
   <style>
     :root {
       color-scheme: dark;
@@ -16,17 +16,19 @@
       font-style: normal;
     }
   </style>
-  
+
 </head>
 
 <textarea id="input" autofocus style="width: 100%; height: 100px;"></textarea>
+
+<input id="timeoutInput" type="number" size="6" value="1000">
 
 <div id="live" aria-label="" aria-live="assertive" role="presentation"></div>
 
 <script>
   const input = document.getElementById('input');
   const live = document.getElementById('live');
-  
+
   window.cursorPosition = 0
   window.typing = 0;
 
@@ -38,6 +40,6 @@
         live.textContent = input.value.substring(window.cursorPosition, input.value.length);
         window.cursorPosition = input.value.length;
       }
-    }, 1000);
+    }, timeoutInput.value);
   });
 </script>
